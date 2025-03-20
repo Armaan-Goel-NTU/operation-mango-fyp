@@ -47,7 +47,13 @@ class StdioHandlers(HandlerBase):
 
         self.log.debug("RDA: %s(), ins_addr=%#x", stored_func.name, stored_func.code_loc.ins_addr)
 
-        in_place = stored_func.name in ["doSystemCmd", "twsystem", "exec_cmd", "execFormatCmd"]
+        in_place = stored_func.name in [
+            "doSystemCmd",
+            "doSystem",
+            "twsystem",
+            "exec_cmd",
+            "execFormatCmd",
+        ]
         if in_place:
             cc = self._calling_convention_resolver.get_cc("printf")
         else:
@@ -369,6 +375,15 @@ class StdioHandlers(HandlerBase):
 
     @HandlerBase.returns
     @HandlerBase.tag_parameter_definitions
+    def handle_doSystem(
+        self, state: "ReachingDefinitionsState", stored_func: StoredFunction
+    ):
+
+        self.log.debug("RDA: Using sprintf() to handle doSystem")
+        return self._handle_sprintf(state, stored_func)
+
+    @HandlerBase.returns
+    @HandlerBase.tag_parameter_definitions
     def handle_dprintf(self,  state: "ReachingDefinitionsState", stored_func: StoredFunction):
         return False, state, None
 
@@ -462,7 +477,6 @@ class StdioHandlers(HandlerBase):
     @HandlerBase.tag_parameter_definitions
     def handle_sscanf(self, state: "ReachingDefinitionsState", stored_func: StoredFunction):
         return self._handle_scanf(state, stored_func)
-
 
     @HandlerBase.returns
     @HandlerBase.tag_parameter_definitions

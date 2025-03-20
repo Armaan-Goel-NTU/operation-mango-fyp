@@ -8,6 +8,7 @@ from .sink_lists import (
     SETTER_SINKS,
     STRCAT_SINKS,
     MEMCPY_SINKS,
+    CUSTOM_SINKS,
     Sink,
 )
 
@@ -21,4 +22,5 @@ VULN_TYPES = {
     "getter": GETTER_SINKS,
     "setter": SETTER_SINKS,
     "memcpy": MEMCPY_SINKS,
+    "custom": CUSTOM_SINKS,
 }

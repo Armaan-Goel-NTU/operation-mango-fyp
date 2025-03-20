@@ -188,7 +188,14 @@ class StoredFunction:
             self._data.args_atoms = self._get_execl_vararg_atoms(self.state)
         elif any(
             x in self.function.name
-            for x in ["printf", "scanf", "twsystem", "doSystemCmd", "execFormatCmd"]
+            for x in [
+                "printf",
+                "scanf",
+                "twsystem",
+                "doSystemCmd",
+                "doSystem",
+                "execFormatCmd",
+            ]
         ):
             self._data.args_atoms = self._get_printf_vararg_atoms(self.state)
 

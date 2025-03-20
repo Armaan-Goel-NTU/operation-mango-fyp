@@ -51,6 +51,11 @@ custom_decls = {
         SimTypeInt(signed=True),
         arg_names=["command"],
     ),
+    "doSystem": SimTypeFunction(
+        [SimTypePointer(SimTypeChar(), offset=0)],
+        SimTypeInt(signed=True),
+        arg_names=["command"],
+    ),
     "doShell": SimTypeFunction(
         [SimTypePointer(SimTypeChar(), offset=0)],
         SimTypeInt(signed=True),
