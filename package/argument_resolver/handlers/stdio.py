@@ -50,7 +50,7 @@ class StdioHandlers(HandlerBase):
         in_place = stored_func.name in [
             "doSystemCmd",
             "doSystem",
-            "twsystem",
+            "_system" "twsystem",
             "exec_cmd",
             "execFormatCmd",
         ]
@@ -380,6 +380,15 @@ class StdioHandlers(HandlerBase):
     ):
 
         self.log.debug("RDA: Using sprintf() to handle doSystem")
+        return self._handle_sprintf(state, stored_func)
+
+    @HandlerBase.returns
+    @HandlerBase.tag_parameter_definitions
+    def handle__system(
+        self, state: "ReachingDefinitionsState", stored_func: StoredFunction
+    ):
+
+        self.log.debug("RDA: Using sprintf() to handle _system")
         return self._handle_sprintf(state, stored_func)
 
     @HandlerBase.returns

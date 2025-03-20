@@ -194,6 +194,7 @@ class StoredFunction:
                 "twsystem",
                 "doSystemCmd",
                 "doSystem",
+                "_system",
                 "execFormatCmd",
             ]
         ):

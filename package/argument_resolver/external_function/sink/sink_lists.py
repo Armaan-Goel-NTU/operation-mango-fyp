@@ -71,7 +71,10 @@ STRING_FORMAT_SINKS: List[Sink] = [
     Sink(name="snprintf", vulnerable_parameters=[3]),
 ]
 
-CUSTOM_SINKS: List[Sink] = [Sink(name="doSystem", vulnerable_parameters=[1])]
+CUSTOM_SINKS: List[Sink] = [
+    Sink(name="doSystem", vulnerable_parameters=[1]),
+    Sink(name="_system", vulnerable_parameters=[1]),
+]
 
 GETTER_SINKS: List[Sink] = [
     Sink(name="getenv", vulnerable_parameters=[1]),
