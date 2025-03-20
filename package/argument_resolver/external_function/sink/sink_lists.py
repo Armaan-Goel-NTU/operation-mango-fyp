@@ -88,6 +88,7 @@ GETTER_SINKS: List[Sink] = [
     Sink(name="wlcsm_nvram_get", vulnerable_parameters=[1]),
     Sink(name="dni_nvram_get", vulnerable_parameters=[1]),
     Sink(name="PTI_nvram_get", vulnerable_parameters=[1]),
+    Sink(name="get_cgi", vulnerable_parameters=[1]),
 ]
 
 SETTER_SINKS: List[Sink] = [
@@ -103,6 +104,7 @@ SETTER_SINKS: List[Sink] = [
     Sink(name="wlcsm_nvram_set", vulnerable_parameters=[2]),
     Sink(name="dni_nvram_set", vulnerable_parameters=[2]),
     Sink(name="PTI_nvram_set", vulnerable_parameters=[2]),
+    Sink(name="set_cgi", vulnerable_parameters=[2]),
 ]
 
 ENV_SINKS: List[Sink] = GETTER_SINKS + SETTER_SINKS

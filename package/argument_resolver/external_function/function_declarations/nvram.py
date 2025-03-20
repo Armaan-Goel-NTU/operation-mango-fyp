@@ -65,12 +65,12 @@ libnvram_decls = {
         SimTypePointer(SimTypeInt(), offset=0),
         arg_names=["key"],
     ),
-    #"acosNvramConfig_write": SimTypeFunction(
+    # "acosNvramConfig_write": SimTypeFunction(
     #    [SimTypePointer(SimTypeChar(), offset=0)],
     #    SimTypePointer(SimTypeChar(), offset=0),
     #    SimTypePointer(SimTypeInt(), offset=0),
     #    arg_names=["key"],
-    #),
+    # ),
     #
     # Custom Definitions
     #
@@ -139,5 +139,18 @@ libnvram_decls = {
         ],
         SimTypeBottom(label="void"),
         arg_names=["name", "value"],
+    ),
+    "get_cgi": SimTypeFunction(
+        [SimTypePointer(SimTypeChar(), offset=0)],
+        SimTypePointer(SimTypeChar(), offset=0),
+        arg_names=["key"],
+    ),
+    "set_cgi": SimTypeFunction(
+        [
+            SimTypePointer(SimTypeChar(), offset=0),
+            SimTypePointer(SimTypeChar(), offset=0),
+        ],
+        SimTypeInt(signed=True),
+        arg_names=["key", "val"],
     ),
 }

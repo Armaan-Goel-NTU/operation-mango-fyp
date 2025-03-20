@@ -57,6 +57,23 @@ class NVRAMHandlers(HandlerBase):
 
     @HandlerBase.returns
     @HandlerBase.tag_parameter_definitions
+    def handle_set_cgi(
+        self, state: "ReachingDefinitionsState", stored_func: StoredFunction
+    ):
+        """
+        Process the impact of the function's execution on register and memory definitions and uses.
+
+        .. sourcecode:: c
+
+            int acosNvramConfig_set(const char *name, const char *value);
+
+        :param ReachingDefinitionsState state:       Register and memory definitions and uses
+        :param Codeloc codeloc:                       Code location of the call
+        """
+        return self._handle_nvram_set(state, stored_func)
+
+    @HandlerBase.returns
+    @HandlerBase.tag_parameter_definitions
     def handle_SetValue(
         self, state: "ReachingDefinitionsState", stored_func: StoredFunction
     ):
@@ -71,7 +88,6 @@ class NVRAMHandlers(HandlerBase):
         :param Codeloc codeloc:                      Code location of the call
         """
         return self._handle_nvram_set(state, stored_func)
-
 
     @HandlerBase.returns
     @HandlerBase.tag_parameter_definitions
@@ -143,7 +159,6 @@ class NVRAMHandlers(HandlerBase):
         """
         return self._handle_nvram_set(state, stored_func)
 
-
     @HandlerBase.returns
     @HandlerBase.tag_parameter_definitions
     def handle_bcm_nvram_set(
@@ -160,7 +175,6 @@ class NVRAMHandlers(HandlerBase):
         :param Codeloc codeloc:                       Code location of the call
         """
         return self._handle_nvram_set(state, stored_func)
-
 
     def _handle_nvram_get(
         self,
@@ -282,6 +296,23 @@ class NVRAMHandlers(HandlerBase):
 
     @HandlerBase.returns
     @HandlerBase.tag_parameter_definitions
+    def handle_get_cgi(
+        self, state: "ReachingDefinitionsState", stored_func: StoredFunction
+    ):
+        """
+        Process the impact of the function's execution on register and memory definitions and uses.
+
+        .. sourcecode:: c
+
+            char *acosNvramConfig_get(const char *name);
+
+        :param ReachingDefinitionsState state:       Register and memory definitions and uses
+        :param Codeloc codeloc:                       Code location of the call
+        """
+        return self._handle_nvram_get(state, stored_func)
+
+    @HandlerBase.returns
+    @HandlerBase.tag_parameter_definitions
     def handle_GetValue(
             self, state: "ReachingDefinitionsState", stored_func: StoredFunction
     ):
@@ -330,7 +361,6 @@ class NVRAMHandlers(HandlerBase):
         :param Codeloc codeloc:                       Code location of the call
         """
         return self._handle_nvram_get(state, stored_func)
-
 
     @HandlerBase.returns
     @HandlerBase.tag_parameter_definitions
